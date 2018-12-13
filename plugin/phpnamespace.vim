@@ -15,7 +15,8 @@ function! PhpNamespaceGet()
     endif
 endfunction
 
-
 function! PhpNamespaceInsert()
     exec "normal! i" . PhpNamespaceGet()
 endfunction
+
+nmap <silent> <Leader>n :call PhpNamespaceInsert()<CR>
