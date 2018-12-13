@@ -82,10 +82,10 @@ function get_autoload_meta($file, $composer)
 function get_psr4_namespace($file, $autoload)
 {
     $subPath = substr($file, strlen($autoload['path']));
-    $subPath = $autoload['prefix'] . $subPath;
+    $subPath = $autoload['prefix'] . '/' . $subPath;
     $namespace = str_replace('/', '\\', $subPath);
     $namespace = str_replace('.php', '', $namespace);
-    return $namespace;
+    return 'namespace ' . $namespace . ';';
 }
 
 function get_psr0_namespace($file, $autoload)
@@ -94,7 +94,7 @@ function get_psr0_namespace($file, $autoload)
     $namespace = str_replace('/', '\\', $subPath);
     $namespace = str_replace('.php', '', $namespace);
 
-    return $namespace;
+    return 'namespace ' . $namespace . ';';
 }
 
 $autoload = get_autoload_meta($file, $composer);
